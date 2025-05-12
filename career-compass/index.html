@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Compass - AI-Powered Career Recommender</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Load Chart.js first -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Add error handling for script loading -->
+    <script>
+        window.onerror = function(msg, url, lineNo, columnNo, error) {
+            console.error('Error: ' + msg + '\nURL: ' + url + '\nLine: ' + lineNo + '\nColumn: ' + columnNo + '\nError object: ' + JSON.stringify(error));
+            return false;
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Career Compass</h1>
+            <p>AI-Powered Career Path Recommendation</p>
+        </header>
+
+        <main>
+            <section class="input-section">
+                <h2>Your Profile</h2>
+                <form id="careerForm" onsubmit="return false;">
+                    <div class="form-group">
+                        <label for="certifications">Certifications (comma-separated)</label>
+                        <input type="text" id="certifications" placeholder="e.g., Azure Certified, Java Internship">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="courses">Completed Courses (comma-separated)</label>
+                        <input type="text" id="courses" placeholder="e.g., HTML, Machine Learning, Cybersecurity">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="interests">Technical Interests (comma-separated)</label>
+                        <input type="text" id="interests" placeholder="e.g., AI, Cloud, Ethical Hacking">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="preferences">Career Preferences (optional)</label>
+                        <input type="text" id="preferences" placeholder="e.g., Remote work, Team leadership">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="codingLevel">Coding Comfort Level (1-10)</label>
+                        <input type="range" id="codingLevel" min="1" max="10" value="5">
+                        <span id="codingLevelValue">5</span>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Get Career Recommendation</button>
+                </form>
+            </section>
+
+            <section class="result-section" id="resultSection" style="display: none;">
+                <h2>Your Career Path</h2>
+                <div class="recommendation-card">
+                    <h3 id="careerTitle">Career Title</h3>
+                    <p id="careerExplanation">Career explanation will appear here...</p>
+                    
+                    <div class="next-steps">
+                        <h4>Next Steps</h4>
+                        <ul id="nextStepsList"></ul>
+                    </div>
+
+                    <div class="improvements">
+                        <h4>Areas for Improvement</h4>
+                        <ul id="improvementsList"></ul>
+                    </div>
+                </div>
+
+                <div class="skills-chart">
+                    <canvas id="skillsChart"></canvas>
+                </div>
+
+                <button id="exportBtn" class="export-btn">Export as PDF</button>
+            </section>
+        </main>
+
+        <footer>
+            <p>Career Compass © 2024 - AI-Powered Career Guidance</p>
+        </footer>
+    </div>
+
+    <!-- Load our script last -->
+    <script src="script.js"></script>
+</body>
+</html> 
